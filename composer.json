@@ -6,7 +6,7 @@
     }
   },
   "scripts": {
-    "dev": "php -S localhost:8877 -t ./public"
+    "dev": "php -S localhost:8000 -t ./public"
   },
   "authors": [
     {
