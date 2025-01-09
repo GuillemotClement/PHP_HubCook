@@ -1,0 +1,3 @@
+<?php
+
+$router->addGetRoute('/', 'homepage');

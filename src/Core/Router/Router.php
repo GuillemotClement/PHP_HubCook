@@ -1,8 +1,6 @@
 <?php
 
-namespace HubCook\Core;
-
-use Exception;
+namespace HubCook\Core\Router;
 
 class Router
 {
@@ -109,5 +107,13 @@ class Router
       }
     }
     $this->abort();
+  }
+
+  public function importFile(string $path): void
+  {
+    //on fait référence à l'instance courante de Router()
+    //en assignant $this à la variable, on créer une variable accessible dans le fichier importer
+    $router = $this; //contient l'instance du router qui est maintenant disponible dans via l'import
+    require BASE_PATH . "$path.php";
   }
 }
