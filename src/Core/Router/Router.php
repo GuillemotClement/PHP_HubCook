@@ -92,7 +92,7 @@ class Router
   protected function abort(int $code = 404):void
   {
     http_response_code($code);
-    require BASE_PATH . "src/Template/{$code}error.view.php";
+    require BASE_PATH . "src/Controllers/Errors/{$code}Error.php";
     die();
   }
 

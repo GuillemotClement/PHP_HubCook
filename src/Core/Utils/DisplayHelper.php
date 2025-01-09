@@ -6,7 +6,6 @@ use JetBrains\PhpStorm\NoReturn;
 
 class DisplayHelper
 {
-
   public static function printValue(string $value):void
   {
     echo '<pre>';
