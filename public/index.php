@@ -1,14 +1,18 @@
 <?php
 
 use HubCook\Core\Router\Router;
+use HubCook\Core\Database\Database;
 
 const BASE_PATH = __DIR__ . "/../";
 
 //import autload
 require BASE_PATH . "vendor/autoload.php";
 
+$db = new Database();
 $router = new Router();
 $router->importFile("src/Core/Router/routes");
+
+
 
 $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];

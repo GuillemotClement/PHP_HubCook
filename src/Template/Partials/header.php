@@ -10,9 +10,9 @@
     </ul>
   </nav>
   <ul class="flex gap-x-2">
-    <li><a href="">Connexion</a></li>
-    <li><a href="">Inscription</a></li>
+    <li><a href="/login">Connexion</a></li>
+    <li><a href="/register">Inscription</a></li>
     <li><a href="">Profil</a></li>
-    <li><a href="">Deconnexion</a></li>
+    <li><a href="/logout">Deconnexion</a></li>
   </ul>
 </header>
