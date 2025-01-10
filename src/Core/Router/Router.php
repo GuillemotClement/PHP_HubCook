@@ -102,6 +102,7 @@ class Router
     $method = strtoupper($method);
     foreach ($this->routes as $route){
       if($uri === $route['path'] && $method === $route['method']){
+        $router = $this;
         require BASE_PATH . "src/Controllers/{$route['controller']}.php";
         die();
       }
@@ -115,5 +116,11 @@ class Router
     //en assignant $this à la variable, on créer une variable accessible dans le fichier importer
     $router = $this; //contient l'instance du router qui est maintenant disponible dans via l'import
     require BASE_PATH . "$path.php";
+  }
+
+  public function renderRootLayout(array $data):void
+  {
+    extract($data);
+    require BASE_PATH.'src/Template/Layout/RootLayout.view.php';
   }
 }
