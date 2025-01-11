@@ -1,3 +1,50 @@
 <?php
 
-echo "login page";
+
+$userData = $data['inputData'];
+$errors = $data['errors'];
+
+?>
+
+<form action=""
+      class="w-96"
+      method="post">
+  <h1 class="text-2xl uppercase text-center font-bold">Connexion</h1>
+  <div class="form-control">
+    <label for="username"
+           class="label">Pseudo</label>
+    <input type="text"
+           id="username"
+           name="username"
+           class="input input-bordered"
+           value="<?= $userData['username'] ?? '' ?>"
+           required>
+  </div>
+  <div class="form-control">
+    <label for="password"
+           class="label">Mot de passe</label>
+    <input type="password"
+           id="password"
+           name="password"
+           class="input input-bordered"
+           required>
+  </div>
+  <div class="text-xs italic text-blue-400 hover:underline my-3 flex flex-col gap-y-1">
+    <a href="/login">Créer un compte</a>
+    <a href="/">Mot de passe oublié</a>
+  </div>
+  <div class="">
+    <ul>
+      <?php foreach ($errors as $error):?>
+        <li class="text-red-400 font-bold"><?= $error?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+  <div class="flex justify-center my-4 gap-x-5">
+    <a href="/"
+       class="btn">Retour</a>
+    <button type="submit"
+            class="btn btn-neutral">Connexion
+    </button>
+  </div>
+</form>

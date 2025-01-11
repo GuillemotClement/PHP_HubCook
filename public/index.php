@@ -13,9 +13,8 @@ $db = new Database();
 $router = new Router();
 $router->importFile("src/Core/Router/routes");
 
+
 DisplayHelper::printValue($_SESSION);
-
-
 $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 $router->routeTo($url, $method);

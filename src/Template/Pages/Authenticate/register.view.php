@@ -1,6 +1,5 @@
 <?php
 
-use HubCook\Core\Utils\DisplayHelper;
 
 $userData = $data['inputData'];
 $errors   = $data['errors'];

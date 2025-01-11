@@ -2,7 +2,6 @@
 
 use HubCook\Core\Utils\DisplayHelper;
 use HubCook\Core\Database\Models\UserModel;
-DisplayHelper::printValue($_SESSION);
 $page = "Authenticate/register";
 const ERROR_REQUIRED = "La saisie est obligatoire";
 const ERROR_LENGTH = "La valeur saisis est trop courte";
@@ -11,10 +10,10 @@ const ERROR_CONFIRM = "La confirmation du mot de passe à échouée";
 
 $error = [];
 $inputData = [];
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   $userModel = new UserModel();
-
 
   $inputData = filter_input_array(INPUT_POST, [
     'username' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -56,10 +55,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     header('Location: /');
   }
 
-
-  //ajout dans la session de nom user
-
-
 }
 
 $data = [
@@ -69,4 +64,3 @@ $data = [
 ];
 
 $router->renderRootLayout($data);
-//require BASE_PATH . "src/Template/Layout/RootLayout.view.php";
