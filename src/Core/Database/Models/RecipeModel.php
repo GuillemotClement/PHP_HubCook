@@ -25,4 +25,12 @@ class RecipeModel extends Database
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute($vars);
   }
+
+  public function fetchRecipe()
+  {
+    $sql = "SELECT * FROM recipe LIMIT 12";
+    $stmt = $this->pdo->query($sql);
+    $row = $stmt->fetchAll();
+    return $row;
+  }
 }
