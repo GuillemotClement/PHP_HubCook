@@ -9,12 +9,12 @@ const ERROR_LENGTH = "La valeur saisis est trop courte";
 const ERROR_INVALID = "La saisis est invalide";
 const ERROR_CONFIRM = "La confirmation du mot de passe à échouée";
 
-
+$error = [];
+$inputData = [];
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   $userModel = new UserModel();
 
-  $error = [];
 
   $inputData = filter_input_array(INPUT_POST, [
     'username' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -63,7 +63,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 $data = [
-  'page' => $page
+  'page' => $page,
+  'inputData' => $inputData,
+  'errors' => $error
 ];
+
 $router->renderRootLayout($data);
 //require BASE_PATH . "src/Template/Layout/RootLayout.view.php";
