@@ -18,7 +18,7 @@ class UserModel extends Database
   {
     DisplayHelper::printValue($data);
 
-    $sql = "INSERT INTO users (user_username, user_email, user_password, role_id) 
+    $sql = "INSERT INTO users (username, email, password, id_role) 
     VALUES (
         :username, :email, :password, :role                                                                  
     )";

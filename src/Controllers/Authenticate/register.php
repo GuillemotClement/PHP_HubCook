@@ -48,15 +48,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $error[] = ERROR_CONFIRM;
   }
 
+  $inputData['password'] = password_hash($password, PASSWORD_DEFAULT);
+  unset($inputData['confirm-password']);
+
   if(empty($error)){
-    echo "Ok pour l'inscription";
+    $userModel->createUser($inputData);
+    header('Location: /');
   }
 
-  $userModel->createUser($inputData);
+
   //ajout dans la session de nom user
 
-  $_SESSION['username'] = $username;
-  header('Location: /');
+
 }
 
 $data = [
