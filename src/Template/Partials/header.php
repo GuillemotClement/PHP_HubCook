@@ -6,7 +6,7 @@
   <nav>
     <ul class="flex gap-x-2">
       <li><a href="/">Accueil</a></li>
-      <li><a href="/recipes">Recettes</a></li>
+      <li><a href="/recipe">Recettes</a></li>
     </ul>
   </nav>
   <ul class="flex gap-x-2">

@@ -16,8 +16,6 @@ class UserModel extends Database
 
   public function createUser(array $data)
   {
-    DisplayHelper::printValue($data);
-
     $sql = "INSERT INTO users (username, email, password, id_role) 
     VALUES (
         :username, :email, :password, :role                                                                  
@@ -33,7 +31,7 @@ class UserModel extends Database
   }
 
   public function getUser(string $username){
-    $sql = "SELECT username, password, id_role FROM users WHERE username LIKE :username";
+    $sql = "SELECT id, username, password, id_role FROM users WHERE username LIKE :username";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([':username' => $username]);
     $row = $stmt->fetch();

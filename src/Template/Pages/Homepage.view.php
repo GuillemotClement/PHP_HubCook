@@ -13,7 +13,7 @@
           menus pour la semaine en quelques clics, grâce à une bibliothèque de recettes variées et inspirantes.
         </p>
       </div>
-      <button class="btn btn-primary">Nos recettes</button>
+      <a class="btn btn-primary" href="/recipe">Nos recettes</a>
     </div>
   </div>
 </div>

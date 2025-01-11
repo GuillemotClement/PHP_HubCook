@@ -34,7 +34,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($user) && password_verify($password, $user['password'])){
       $_SESSION = [
         'username' => $username,
-        'role' => $user['id_role']
+        'role' => $user['id_role'],
+        'user_id' => $user['id'],
       ];
       header('Location: /');
     }else{
