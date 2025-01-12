@@ -1,0 +1,1 @@
+<h1>Recipe detail</h1>

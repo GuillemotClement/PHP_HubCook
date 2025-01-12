@@ -2,9 +2,12 @@
 
 namespace HubCook\Core\Router;
 
+use HubCook\Core\Utils\DisplayHelper;
+
 class Router
 {
   private array $routes = [];
+  private array $params = [];
 
   protected function addRoute(string $path, string $controller, string $method): void
   {
@@ -84,9 +87,10 @@ class Router
     return $this->routes;
   }
 
-  protected function getUri(string $url):string
+  protected function getPath(string $url):string
   {
     return parse_url($url, PHP_URL_PATH);
+
   }
 
   protected function abort(int $code = 404):void
@@ -98,10 +102,27 @@ class Router
 
   public function routeTo(string $url, string $method): void
   {
-    $uri = $this->getUri($url);
+    $uri = $this->getPath($url);
     $method = strtoupper($method);
+
+
     foreach ($this->routes as $route){
-      if($uri === $route['path'] && $method === $route['method']){
+
+      if(strpos($route['path'], '{') !== false){
+        $pattern = preg_replace('/\{([^}]+)\}/', '([^/]+)', $route['path']);
+        $pattern = str_replace('/', '\/', $pattern);
+        $pattern = '/^' . $pattern . '$/';
+
+        if (preg_match($pattern, $uri, $matches)) {
+          // Passe le paramètre au contrôleur
+          array_shift($matches); // Retire le premier match (chemin complet)
+          $_GET['params'] = $matches;
+
+          $router = $this;
+          require BASE_PATH . "src/Controllers/{$route['controller']}.php";
+          return;
+        }
+      }elseif($uri === $route['path'] && $method === $route['method']){
         $router = $this;
         require BASE_PATH . "src/Controllers/{$route['controller']}.php";
         die();
@@ -123,4 +144,7 @@ class Router
     extract($data);
     require BASE_PATH.'src/Template/Layout/RootLayout.view.php';
   }
+
+
+
 }

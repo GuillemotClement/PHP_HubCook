@@ -30,7 +30,7 @@ $recipe = $recipes[0];
         <div class="card-actions justify-between">
           <a href=""
              class="btn btn-success">Save</a>
-          <button class="btn btn-neutral">Details</button>
+          <a class="btn btn-neutral" href="/recipe/<?=$recipe['id']?>">Details</a>
         </div>
       </div>
     </div>

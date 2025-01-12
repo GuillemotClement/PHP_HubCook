@@ -11,3 +11,4 @@ $router->addGetRoute('/logout', 'Authenticate/logout');
 $router->addGetRoute('/recipe', 'Recipe/recipeList');
 $router->addGetRoute('/recipeCreate', 'Recipe/recipeCreate');
 $router->addPostRoute('/recipeCreate', 'Recipe/recipeCreate');
+$router->addGetRoute('/recipe/{id}', 'Recipe/recipeDetail');
