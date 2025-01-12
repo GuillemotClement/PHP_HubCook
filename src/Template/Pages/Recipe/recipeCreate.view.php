@@ -27,13 +27,18 @@
   <div class="form-control">
     <label for="instructions"
            class="label">Instructions</label>
-    <textarea name="instructions"
-              id="instructions"
+    <textarea name="instructions1"
+              id="instruction1"
               cols="30"
               rows="5"
               class="textarea textarea-bordered"
-              placeholder="1 - Première étape :"
+              placeholder="Etape 1 :"
               value="<?= $userData['instructions'] ?? '' ?>"></textarea>
+  </div>
+  <div class="" id="newBlocInstruct"></div>
+  <div class="border rounded-full p-2 my-3 bg-gray-200 hover:shadow-md active:shadow-xl active:bg-gray-400
+  active:text-white text-center" id="addInstruction">
+    <i class="fa-solid fa-plus"></i> Nouvelle étape
   </div>
   <div class="form-control">
     <label for="duration"
@@ -72,3 +77,43 @@
     <button type="submit" class="btn btn-neutral">Créer</button>
   </div>
 </form>
+
+<script>
+
+  function createTextareaBlock(stepNumber){
+    //création du conteneur du text area
+    const divContainer = document.createElement('div');
+    divContainer.class = "form-control";
+
+    //création du label
+    const label = document.createElement('label');
+    label.setAttribute('for', `instruction${stepNumber}`);
+    label.class = 'label';
+    label.textContent = `Instruction ${stepNumber}`;
+
+    //création du textarea
+    const textArea = document.createElement('textarea');
+    textArea.name = `instructions${stepNumber}`;
+    textArea.id = `instruction${stepNumber}`;
+    textArea.cols = "30";
+    textArea.rows = "5";
+    textArea.class = "textarea textarea-bordered";
+    textArea.placeholder = `Etape ${stepNumber}`;
+
+    //assemblage des éléments
+    divContainer.appendChild(label);
+    divContainer.appendChild(textArea);
+
+    return divContainer;
+  }
+
+  const container = document.querySelector('#newBlocInstruct');
+  const addButton = document.querySelector('#addInstruction');
+  let stepCount = 2;
+
+  addButton.addEventListener('click', () => {
+    const newTextareaBlock = createTextareaBlock(stepCount);
+    container.appendChild(newTextareaBlock);
+    stepCount++;
+  })
+</script>

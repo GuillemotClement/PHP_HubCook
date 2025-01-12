@@ -43,7 +43,7 @@ function convertToOrderedList(string $text): string
        class="rounded-md shadow-md">
   <h1 class="text-center font-bold text-2xl my-6"><?= $recipe['name'] ?></h1>
   <div class="flex justify-between gap-x-8 px-12 mb-4">
-    <p><i class="fa-solid fa-user-pen text-xl"></i> <?= $username ?></p>
+    <p class="capitalize"><i class="fa-solid fa-user-pen text-xl"></i> <?= $username ?></p>
     <p><i class="fa-regular fa-clock text-xl"></i> <?= $recipe['duration']?> minutes</p>
     <p>
       <?php for ($i = 0; $i < $recipe['difficulty']; $i++): ?>
