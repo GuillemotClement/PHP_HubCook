@@ -36,6 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         'username' => $username,
         'role' => $user['id_role'],
         'user_id' => $user['id'],
+        'user_image' => $user['image']
       ];
       header('Location: /');
     }else{

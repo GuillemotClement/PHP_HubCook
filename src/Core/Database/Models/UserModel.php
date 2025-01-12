@@ -31,7 +31,7 @@ class UserModel extends Database
   }
 
   public function getUser(string $username){
-    $sql = "SELECT id, username, password, id_role FROM users WHERE username LIKE :username";
+    $sql = "SELECT id, username, password, id_role, image FROM users WHERE username LIKE :username";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([':username' => $username]);
     $row = $stmt->fetch();
