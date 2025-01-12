@@ -33,4 +33,22 @@ class RecipeModel extends Database
     $row = $stmt->fetchAll();
     return $row;
   }
+
+  public function fetchRecipeDetail(int $id): array
+  {
+    $sql = "SELECT * FROM recipe WHERE id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    $row = $stmt->fetch();
+    return $row;
+  }
+
+  public function getUserName(int $id)
+  {
+    $sql = "SELECT username FROM users WHERE id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    $row = $stmt->fetch();
+    return $row;
+  }
 }

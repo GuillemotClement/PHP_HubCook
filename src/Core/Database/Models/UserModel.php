@@ -37,4 +37,5 @@ class UserModel extends Database
     $row = $stmt->fetch();
     return $row;
   }
+
 }
